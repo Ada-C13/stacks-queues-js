@@ -1,6 +1,6 @@
 const { balanced, evaluatePostfix } = require('../lib/problems');
 
-describe.skip("test wave 3 problems", () => {
+describe("test wave 3 problems", () => {
     describe("balanced", () => {
         it('should return true given balanced strings', () => {
             expect(balanced('(({}))')).toEqual(true);
@@ -26,7 +26,7 @@ describe.skip("test wave 3 problems", () => {
         });
     });
 
-    describe("postfix", () => {
+    describe.skip("postfix", () => {
         it('can add 2 numbers together', () => {
             expect(evaluatePostfix('34+')).toEqual(7);
             expect(evaluatePostfix('34*')).toEqual(12);
