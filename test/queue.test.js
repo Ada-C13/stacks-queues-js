@@ -101,4 +101,29 @@ describe("test queue implementation", () => {
         expect(q.toString()).toEqual('[40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210]');
     });
 
+    it('throws error for adding to full queue', () => {
+        const q = new Queue();
+        for (let i = 0; i < 20; i++) {
+            q.enqueue(i);
+        }
+        expect(q.size()).toEqual(20)
+        expect(() => {
+            q.enqueue(100)
+          }).toThrow("The queue is full");
+    });
+
+    it('is a circular queue', () => {
+        const q = new Queue();
+        for (let i = 0; i < 20; i++) {
+            q.enqueue(i);
+        }
+        expect(q.size()).toEqual(20)
+        q.dequeue()
+        q.dequeue()
+        expect(q.size()).toEqual(18)
+        let i = q.dequeue()
+        expect(i).toEqual(2)
+        q.enqueue(100)
+        expect(q.store[0]).toEqual(100)
+    });
 });
